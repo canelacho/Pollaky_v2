@@ -1,0 +1,20 @@
+extends layout_login
+
+block content
+	.container
+		.containerLogin
+			.row.justify-content-center
+				.col-sm-12.col-md-6.col-lg-4
+					form(id='startSession' action='/startSession' method='POST' novalidate='')
+					.logoLogin
+						img(src='/img/ctrlable_logo.jpg')
+					input.inputLogin(name='username' type='text' placeholder='user_name' required)
+					.barLogin
+						i
+					input.inputLogin(name='password' type='password' placeholder='password' required)
+
+					a.forgot_link(href="#") forgot ?
+					
+					button.login(type='submit' form='startSession') Sign in
+					.footLogin Code name "#{project_name}"
+

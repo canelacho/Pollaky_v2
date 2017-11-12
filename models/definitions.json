@@ -1,0 +1,12 @@
+{ 
+	"definitions" : {
+			"styles" 				 : "/css/style.css",
+			"bootstrapcss" 	 : "/css/bootstrap.min.css",
+			"fontawesomecss" : "/css/font-awesome.min.css",
+			"materialiconcss": "https://fonts.googleapis.com/icon?family=Material+Icons",
+			"jquery" 			 	 : "/js/jquery.min.js",
+			"tether"			 	 : "/js/tether.min.js",
+			"bootstrapjs"	 	 : "/js/bootstrap.min.js",
+			"project_name" 	 : "Pollaky - Ver 0.1.0"
+	}
+}

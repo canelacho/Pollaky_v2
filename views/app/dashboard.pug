@@ -1,0 +1,48 @@
+extends layout_app
+
+block content
+	main
+		if (msg)
+			.alert.alert-success.alert-dismissible.fade.show(role="alert")
+				button.close(type="button" data-dismiss="alert" aria-label="Close")
+					span(aria-hidden="true") &times; 
+				strong #{msg}
+
+		.jumbotron
+			h1 Hi! admin
+			span Let's work with Ctrlable services
+
+		h3 List of Projects
+	
+		table.table.table-hover
+			thead
+				tr
+					th.text-center Avaliable
+					th.text-center Project Name 
+					th.text-center Status
+					th.text-center Country
+					th.text-center City
+					th.text-center Qt Dev
+					th.text-center Options
+			tbody
+				each doc in docs
+					tr 
+						td.text-center 
+							if (doc.avaliable)
+								i.material-icons.text-success check
+							else
+								i.material-icons.text-danger clear
+						td= doc.name
+						td.text-center= doc.status
+						td.text-center= doc.country
+						td.text-center= doc.city 
+						td.text-center= doc.quantityDevices 
+						td.text-center  
+							a(href='/app/view-project/'+(doc._id))
+								i.material-icons.text-muted.mr-2 remove_red_eye
+							a(href='/app/edit-project-form/'+(doc._id))
+								i.material-icons.text-info.mr-2 edit
+							a(href='/app/work-with-me/'+(doc._id))
+								i.material-icons.text-success.mr-4 send
+							a(href='/app/project/'+(doc._id)+'?_method=DELETE')
+								i.material-icons.text-danger delete_forever

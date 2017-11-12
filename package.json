@@ -1,0 +1,29 @@
+{
+  "name": "pollaky_v2",
+  "version": "0.1.0",
+  "description": "Ctrlable App collect projects information",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ctrlable",
+    "node",
+    "javascript"
+  ],
+  "author": "@canelacho",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "bootstrap": "^4.0.0-alpha.6",
+    "express": "^4.16.2",
+    "express-method-override": "0.0.3",
+    "jquery": "^3.2.1",
+    "mongoose": "^4.12.4",
+    "morgan": "^1.9.0",
+    "pug": "^2.0.0-rc.4",
+    "serve-favicon": "^2.4.5",
+    "tether": "^1.4.0"
+  }
+}

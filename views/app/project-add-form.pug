@@ -1,0 +1,58 @@
+extends layout_app
+
+block content
+	main
+		.jumbotron
+			h1 Add New Project
+			h4.mb-5 Take your time and fill all the blanks
+
+			
+			form(action="project" method="POST")
+				.form-group
+					label(for="project_name") Project Name
+					input.form-control#project_name(type="text" name="project_name" placeholder="Project name" required)
+				.form-group
+					label(for="project_in_charge") In Charge
+					select.form-control(name="project_in_charge")
+						each val in userList
+							Option= val.username
+						
+				.form-group
+					label(for="project_first_contact") First Contact
+					input.form-control#project_first_contact(type="date" name="project_first_contact")
+				.form-group
+					label(for="project_address") Address
+					input.form-control#project_address(type="text" name="project_address" placeholder="Address, street, number, location")
+				.form-group
+					label(for="project_zip_code") Zip Code
+					input.form-control#project_zip_code(type="text" name="project_zip_code" placeholder="Zip Code")
+				.form-group
+					label(for="project_country") Country
+					input.form-control#project_country(type="text" name="project_country" placeholder="Country")
+				.form-group
+					label(for="project_state") State
+					input.form-control#project_state(type="text" name="project_state" placeholder="State")
+				.form-group
+					label(for="project_city") City
+					input.form-control#project_city(type="text" name="project_city" placeholder="City")
+				.form-group
+					label(for="project_contact_name") Contact Name
+					input.form-control#project_contact_name(type="text" name="project_contact_name" placeholder="Contact Name")
+				.form-group
+					label(for="project_contact_email") Contact e-mail
+					input.form-control#project_contact_email(type="text" name="project_contact_email" placeholder="Contact e-mail")
+				.form-group
+					label(for="project_contact_phone") Contact Phone
+					input.form-control#project_contact_phone(type="text" name="project_contact_phone" placeholder="Contact Phone")
+				.form-group
+					label(for="project_contact_title") Contact Title
+					input.form-control#project_contact_title(type="text" name="project_contact_title" placeholder="Contact Title")
+				.form-group
+					label(for="project_observations") Observations
+					textarea.form-control#project_observations(name="project_observations" placeholder="Any info or Observation to do..." rows="3")
+				
+				button.btn.btn-primary(type="submit") Save
+					i.material-icons.align-middle.ml-1 save
+				      		
+					    
+			

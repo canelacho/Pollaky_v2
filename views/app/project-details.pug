@@ -1,0 +1,90 @@
+extends layout_app
+
+block content
+	main
+		.jumbotron
+			h1 Project Details 
+			h4 View all the project info
+			h6.mb-5 Created: #{doc.createdData}
+			.float-right
+				a(href='/app/dashboard?msg=cls')
+					i.material-icons.text-muted.mr-2 home
+				a(href='/app/edit-project-form/'+(doc._id))
+					i.material-icons.text-info.mr-2 edit
+				a(href='/app/work-with-me/'+(doc._id))
+					i.material-icons.text-success.mr-4 send
+				a(href='/app/project/'+(doc._id)+'?_method=DELETE')
+					i.material-icons.text-danger delete_forever
+			
+		form
+			.form-group
+				label(for="project_name") Project Name
+				input.form-control#project_name(type="text" name="project_name" placeholder="Project name" value=(doc.name) disabled)
+			.form-group
+				label(for="project_in_charge") In Charge
+				select.form-control(name="project_in_charge" disabled)
+					each val in userList
+						Option= val.username
+			.form-group
+				label(for="project_first_contact") First Contact 
+				input#project_first_contact(type="text" name="project_first_contact" value=(doc.firstContact) hidden disabled)
+				input.form-control#project_first_contact_mask(type="date" name="project_first_contact_mask" value=(firstContact) disabled)
+			.form-group
+				label(for="project_address") Address
+				input.form-control#project_address(type="text" name="project_address" placeholder="Address, street, number, location" value=(doc.address) disabled)
+			.form-group
+				label(for="project_zip_code") Zip Code
+				input.form-control#project_zip_code(type="text" name="project_zip_code" placeholder="Zip Code" value=(doc.zipcode) disabled)
+			.form-group
+				label(for="project_country") Country
+				input.form-control#project_country(type="text" name="project_country" placeholder="Country" value=(doc.country) disabled)
+			.form-group
+				label(for="project_state") State
+				input.form-control#project_state(type="text" name="project_state" placeholder="State" value=(doc.state) disabled)
+			.form-group
+				label(for="project_city") City
+				input.form-control#project_city(type="text" name="project_city" placeholder="City" value=(doc.city) disabled)
+			.form-group
+				label(for="project_contact_name") Contact Name
+				input.form-control#project_contact_name(type="text" name="project_contact_name" placeholder="Contact Name" value=(doc.contacts[0].contactName) disabled)
+			.form-group
+				label(for="project_contact_email") Contact e-mail
+				input.form-control#project_contact_email(type="text" name="project_contact_email" placeholder="Contact e-mail" value=(doc.contacts[0].contactEmail) disabled)
+			.form-group
+				label(for="project_contact_phone") Contact Phone
+				input.form-control#project_contact_phone(type="text" name="project_contact_phone" placeholder="Contact Phone" value=(doc.contacts[0].contactPhone) disabled)
+			.form-group
+				label(for="project_contact_title") Contact Title
+				input.form-control#project_contact_title(type="text" name="project_contact_title" placeholder="Contact Title" value=(doc.contacts[0].contactTitle) disabled)
+			.form-group
+				label(for="project_observations") Observations
+				textarea.form-control#project_observations(name="project_observations" placeholder="Any info or Observation to do..." rows="3" disabled) #{doc.observations}
+			.form-group
+				label(for="project_status") Status
+				select.form-control(name="project_status" disabled)
+					Option(value="1" selected=(doc.status==1?true:false)) 1 - Initial Contact
+					Option(value="2" selected=(doc.status==2?true:false)) 2 - Client Aprove
+					Option(value="3" selected=(doc.status==3?true:false)) 3 - Initiated
+					Option(value="4" selected=(doc.status==4?true:false)) 4 - Installing Hardware
+					Option(value="5" selected=(doc.status==5?true:false)) 5 - Configuring Software
+					Option(value="6" selected=(doc.status==6?true:false)) 6 - Delivering Project
+					Option(value="7" selected=(doc.status==7?true:false)) 7 - Finished
+			.form-group
+				.span Project Avaliability
+				.form-check.form-check-inline#avaliable
+					label.form-check-label Avaliable
+						input.form-check-input.float-left(type="radio" name="project_avaliability" id="inlineRadio1" checked=((doc.avaliable==true)?true:false) value="true" disabled)
+				.form-check.form-check-inline
+					label.form-check-label Unavaliable
+						input.form-check-input.float-left(type="radio" name="project_avaliability" id="inlineRadio2" checked=((doc.avaliable==false)?true:false) value="false" disabled)
+				
+				hr
+				.mb-4.float-right
+					a(href='/app/dashboard?msg=cls')
+						i.material-icons.text-muted.mr-2 home
+					a(href='/app/edit-project-form'+(doc._id))
+						i.material-icons.text-info.mr-2 edit
+					a(href='/app/work-with-me'+(doc._id))
+						i.material-icons.text-success.mr-4 send
+					a(href='/app/project'+(doc._id)+'?_method=DELETE')
+						i.material-icons.text-danger delete_forever

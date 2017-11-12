@@ -1,0 +1,51 @@
+doctype html
+html(leng='en')
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		link(rel="stylesheet" href=styles)
+		link(rel="stylesheet" href=bootstrapcss)
+		link(rel="stylesheet" href=materialiconcss)
+		title=title
+	body
+
+		div.container
+			nav.navbar.navbar-toggleable-sm.navbar-light.bg-faded
+				button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation")
+					i.material-icons menu
+				div.collapse.navbar-collapse#navbarTogglerDemo01
+					a.navbar-brand(href='/app/dashboard?msg=cls')
+						img.logoApp(src="/img/ctrlable_logo_2.png" alt="ctrlable_logo")
+					ul.navbar-nav
+						li.nav-item
+							a.nav-link(href='/app/dashboard?msg=cls') Dashboard
+						li.nav-item
+							a.nav-link(href='/app/devices') 
+								i.material-icons.float-left add 
+								span.float-left Device 
+						li.nav-item
+							a.nav-link(href='/app/add-project-form') 
+								i.material-icons.float-left add 
+								span.float-left Project
+						li.nav-item
+							a.nav-link(href='/app/admin-users') 
+								i.material-icons.float-left add
+								span.float-left Users
+						li.nav-item
+							a.nav-link(href='/app/about') About
+						li.nav-item.dropdown
+							a.nav-link.dropdown-toggle#navbarDropdownMenuLink(href='closeSession' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") User Name
+							.dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
+								a.dropdown-item(href="#") &nbsp; Profile
+									i.material-icons.float-left account_circle							
+								a.dropdown-item(href="#") &nbsp; Sign out
+									i.material-icons.float-left exit_to_app
+									
+								
+			.mb-2
+
+			block content
+
+		script(src=jquery)
+		script(src=tether)
+		script(src=bootstrapjs)

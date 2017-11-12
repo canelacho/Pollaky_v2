@@ -1,0 +1,83 @@
+extends layout_app
+
+block content
+	main
+		.jumbotron
+			h1 Edit Project
+			h4 Fix all your fills
+			h6.mb-5 Created: #{doc.createdData}
+			
+			form(action="/app/project/"+(doc._id) method="POST")
+				.form-group
+					label(for="project_name") Project Name
+					input.form-control#project_name(type="text" name="project_name" placeholder="Project name" value=(doc.name) required)
+				.form-group
+					label(for="project_in_charge") In Charge
+					select.form-control(name="project_in_charge")
+						each val in userList
+							Option= val.username
+				.form-group
+
+					label(for="project_first_contact") First Contact 
+					input#project_first_contact(type="text" name="project_first_contact" value=(doc.firstContact) hidden )
+					input.form-control#project_first_contact_mask(type="date" name="project_first_contact_mask" value=(firstContact) )
+				.form-group
+					label(for="project_address") Address
+					input.form-control#project_address(type="text" name="project_address" placeholder="Address, street, number, location" value=(doc.address))
+				.form-group
+					label(for="project_zip_code") Zip Code
+					input.form-control#project_zip_code(type="text" name="project_zip_code" placeholder="Zip Code" value=(doc.zipcode))
+				.form-group
+					label(for="project_country") Country
+					input.form-control#project_country(type="text" name="project_country" placeholder="Country" value=(doc.country))
+				.form-group
+					label(for="project_state") State
+					input.form-control#project_state(type="text" name="project_state" placeholder="State" value=(doc.state))
+				.form-group
+					label(for="project_city") City
+					input.form-control#project_city(type="text" name="project_city" placeholder="City" value=(doc.city))
+				.form-group
+					label(for="project_contact_name") Contact Name
+					input.form-control#project_contact_name(type="text" name="project_contact_name" placeholder="Contact Name" value=(doc.contacts[0].contactName))
+				.form-group
+					label(for="project_contact_email") Contact e-mail
+					input.form-control#project_contact_email(type="text" name="project_contact_email" placeholder="Contact e-mail" value=(doc.contacts[0].contactEmail))
+				.form-group
+					label(for="project_contact_phone") Contact Phone
+					input.form-control#project_contact_phone(type="text" name="project_contact_phone" placeholder="Contact Phone" value=(doc.contacts[0].contactPhone))
+				.form-group
+					label(for="project_contact_title") Contact Title
+					input.form-control#project_contact_title(type="text" name="project_contact_title" placeholder="Contact Title" value=(doc.contacts[0].contactTitle))
+				.form-group
+					label(for="project_observations") Observations
+					textarea.form-control#project_observations(name="project_observations" placeholder="Any info or Observation to do..." rows="3") #{doc.observations}
+				.form-group
+					label(for="project_status") Status
+					select.form-control(name="project_status")
+						Option(value="1" selected=(doc.status==1?true:false)) 1 - Initial Contact
+						Option(value="2" selected=(doc.status==2?true:false)) 2 - Client Aprove
+						Option(value="3" selected=(doc.status==3?true:false)) 3 - Initiated
+						Option(value="4" selected=(doc.status==4?true:false)) 4 - Installing Hardware
+						Option(value="5" selected=(doc.status==5?true:false)) 5 - Configuring Software
+						Option(value="6" selected=(doc.status==6?true:false)) 6 - Delivering Project
+						Option(value="7" selected=(doc.status==7?true:false)) 7 - Finished
+				.form-group
+					.span Project Avaliability
+					.form-check.form-check-inline#avaliable
+						label.form-check-label Avaliable
+							input.form-check-input.float-left(type="radio" name="project_avaliability" id="inlineRadio1" checked=((doc.avaliable==true)?true:false) value="true")
+					.form-check.form-check-inline
+						label.form-check-label Unavaliable
+							input.form-check-input.float-left(type="radio" name="project_avaliability" id="inlineRadio2" checked=((doc.avaliable==false)?true:false) value="false")
+					
+				input(type="hidden", name="_method", value="put")
+				button.btn.btn-primary(type="submit") Save
+				      		
+	script.
+		
+
+		document.getElementById('project_first_contact_mask').addEventListener("change", 
+			function(e) { 
+				document.getElementById('project_first_contact').value=e.target.value
+			},false)	    
+			
